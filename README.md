@@ -24,6 +24,21 @@ Once the tap is added, you can install any available casks:
 brew install --cask droid-scout
 ```
 
+### Note on Gatekeeper (macOS Security)
+
+Because Droid Scout is an open-source utility and is not signed/notarized with a paid Apple Developer certificate, macOS Gatekeeper may flag it as "damaged" upon launch. 
+
+To install it safely and bypass quarantine transparently, run the installation with the Homebrew environment variable:
+
+```bash
+HOMEBREW_CASK_OPTS="--no-quarantine" brew install --cask droid-scout
+```
+
+*Alternatively, if already installed, you can manually remove the quarantine flag using:*
+```bash
+xattr -d com.apple.quarantine "/Applications/Droid Scout.app"
+```
+
 ### Updating Casks
 
 To check for updates and upgrade your installed casks:
