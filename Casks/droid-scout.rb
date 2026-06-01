@@ -1,6 +1,6 @@
 cask "droid-scout" do
-  version "0.1.7"
-  sha256 "f1ebec3c0f4240085328d67d50d02ff946be55f5bf6b35d8a8398662ee01674b"
+  version "0.1.8"
+  sha256 "7456a8207162ceb062634a9403be014796bcf8d6695bfb475f2551aa276ceb63"
 
   url "https://github.com/samkit/droid-scout/releases/download/v#{version}/DroidScout-#{version}.zip",
       verified: "github.com/samkit/droid-scout/"
