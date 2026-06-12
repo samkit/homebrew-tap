@@ -26,15 +26,17 @@ brew install --cask droid-scout
 
 ### Note on Gatekeeper (macOS Security)
 
-Because Droid Scout is an open-source utility and is not signed/notarized with a paid Apple Developer certificate, macOS Gatekeeper may flag it as "damaged" upon launch. 
-
-To install it safely and bypass quarantine transparently, run the installation with the Homebrew environment variable:
+The `droid-scout` cask includes a `postflight` step that automatically removes the `com.apple.quarantine` attribute after installation. This allows the unsigned open-source build to launch normally after:
 
 ```bash
-HOMEBREW_CASK_OPTS="--no-quarantine" brew install --cask droid-scout
+brew tap samkit/tap
+brew install --cask samkit/tap/droid-scout
 ```
 
-*Alternatively, if already installed, you can manually remove the quarantine flag using:*
+No `--no-quarantine` flag or manual `xattr` command is required for standard installs from the tap.
+
+If you install the `.app` manually (e.g. from a release zip), you can still run:
+
 ```bash
 xattr -d com.apple.quarantine "/Applications/Droid Scout.app"
 ```

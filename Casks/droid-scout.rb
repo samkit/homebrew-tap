@@ -1,6 +1,6 @@
 cask "droid-scout" do
-  version "0.2.0"
-  sha256 "11b0b3ed73acc9cbcd7fecef7b79ebba14922e0dafc109af8c27efab50721625"
+  version "0.2.1"
+  sha256 "e97746faa51b2cf2e2b50947a7988c505de1ef5ad99d34f742d69adb6aac55e5"
 
   url "https://github.com/samkit/droid-scout/releases/download/v#{version}/DroidScout-#{version}.zip",
       verified: "github.com/samkit/droid-scout/"
@@ -16,6 +16,12 @@ cask "droid-scout" do
   depends_on macos: :ventura
 
   app "Droid Scout.app"
+
+  postflight do
+    # Remove quarantine attribute (for unsigned builds from this tap). Always succeed even if attr is absent.
+    system_command "/bin/sh",
+                   args: ["-c", "/usr/bin/xattr -d com.apple.quarantine \"#{appdir}/Droid Scout.app\" 2>/dev/null || true"]
+  end
 
   uninstall quit: "com.droidscout.app"
 
